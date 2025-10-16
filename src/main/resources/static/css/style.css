@@ -1,0 +1,254 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background: #1e1f26;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header .logo {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+}
+
+#menu-button {
+    position: absolute;
+    left: 20px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    padding: 50px;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 180px;
+    object-fit: contain;
+}
+
+.product-card h3 {
+    margin: 10px 0 5px;
+    font-size: 20px;
+}
+
+.product-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+.product-card button {
+    margin-top: 12px;
+    padding: 12px 20px;
+    background: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.product-card button:hover {
+    background: #ff3b2f;
+}
+
+#cart-button-floating {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #ff6f61;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+#cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    background: #fff;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+    padding: 20px;
+    z-index: 999;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+#cart-sidebar.open {
+    transform: translateX(0);
+}
+
+#cart-sidebar h2 {
+    margin-top: 0;
+}
+
+#cart-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+#cart-sidebar li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    align-items: center;
+}
+
+#cart-sidebar li button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ff6f61;
+    margin-left: 5px;
+}
+
+#close-cart-sidebar {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+#checkout-button {
+    width: 100%;
+    padding: 12px;
+    background: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#checkout-form-container {
+    display: none;
+    margin-top: 20px;
+}
+
+#checkout-form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+#checkout-form-container button {
+    width: 100%;
+    padding: 12px;
+    background: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#checkout-form-container button:hover {
+    background: #ff3b2f;
+}
+
+#sidebar-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100%;
+    background: #fff;
+    box-shadow: 5px 0 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+    z-index: 1000;
+    padding: 20px;
+    overflow: auto;
+}
+
+#sidebar-menu.open {
+    transform: translateX(0);
+}
+
+#sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar-menu li {
+    padding: 12px 0;
+    cursor: pointer;
+    font-weight: 500;
+    border-bottom: 1px solid #eee;
+}
+
+#sidebar-menu li:hover {
+    color: #ff6f61;
+}
+
+#sidebar-menu #close-sidebar {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.tab-content {
+    display: none;
+    margin-top: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+#main-content {
+    transition: margin-left 0.3s ease, margin-right 0.3s ease, width 0.3s ease;
+}
+
+#main-content.shrink-cart {
+    margin-right: 350px;
+    width: calc(100% - 350px);
+}
+
+#main-content.shrink-sidebar {
+    margin-left: 280px;
+    width: calc(100% - 280px);
+    filter: brightness(0.9);
+}
+
+#main-content.shrink-cart.shrink-sidebar {
+    margin-left: 280px;
+    margin-right: 350px;
+    width: calc(100% - 280px - 350px);
+}

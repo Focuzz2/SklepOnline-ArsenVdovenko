@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Sklep Online</title>
+<link rel="stylesheet" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div id="menu-button">&#9776;</div>
+    <div class="logo">SklepOnline</div>
+</header>
+
+<main id="main-content">
+    <div class="products-grid" id="products"></div>
+</main>
+
+<div id="cart-button-floating">
+    🛒 <span id="cart-count">0</span>
+</div>
+
+<div id="cart-sidebar">
+    <h2>Twój koszyk</h2>
+    <ul id="cart-list"></ul>
+    <p id="cart-total"></p>
+    <button id="checkout-button">Opłać</button>
+    <span id="close-cart-sidebar">&times;</span>
+
+    <div id="checkout-form-container">
+        <h3>Podaj dane do zakupu</h3>
+        <form id="checkout-form">
+            <input type="text" id="customer-name" placeholder="Imię i nazwisko" required><br>
+            <input type="email" id="customer-email" placeholder="Email" required><br>
+            <input type="text" id="customer-address" placeholder="Adres" required><br>
+            <input type="tel" id="customer-phone" placeholder="Telefon" required><br>
+            <button type="submit">Potwierdź zamówienie</button>
+        </form>
+    </div>
+</div>
+
+<div id="sidebar-menu">
+    <span id="close-sidebar">&times;</span>
+    <ul>
+        <li id="tab-about">O nas</li>
+        <li id="tab-contact">Kontakt</li>
+    </ul>
+    <div id="sidebar-content">
+        <div id="content-about" class="tab-content active">
+            <h2>O nas</h2>
+            <p>Witamy w naszym sklepie online! Oferujemy najlepsze produkty w świetnych cenach.</p>
+        </div>
+        <div id="content-contact" class="tab-content">
+            <h2>Kontakt</h2>
+            <p>Email: kontakt@skleponline.com</p>
+            <p>Telefon: +48 123 456 789</p>
+            <p>Adres: ul. Domaniewska 10, Warszawa</p>
+        </div>
+    </div>
+</div>
+
+<script src="/js/cart.js"></script>
+<script src="/js/sidebar.js"></script>
+
+</body>
+</html>
