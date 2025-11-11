@@ -252,3 +252,56 @@ header .logo {
     margin-right: 350px;
     width: calc(100% - 280px - 350px);
 }
+#add-product-container {
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin: 30px auto;
+    max-width: 500px;
+}
+
+/* Заголовок форми */
+#add-product-container h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    text-align: center;
+    color: #1e1f26;
+}
+
+/* Поля вводу */
+#add-product-container input,
+#add-product-container textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Змінюємо textarea щоб було трохи вище */
+#add-product-container textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+/* Кнопка додавання продукту */
+#addProductForm button {
+    width: 100%;
+    padding: 12px;
+    background: #ff6f61; /* колір як у корзини */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+/* Ховер ефект */
+#addProductForm button:hover {
+    background: #ff3b2f;
+}

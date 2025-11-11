@@ -81,14 +81,37 @@ document.addEventListener("DOMContentLoaded", () => {
         checkoutFormContainer.style.display = 'block';
     };
 
-    checkoutForm.onsubmit = (e) => {
-        e.preventDefault();
-        alert('Dziękujemy za zamówienie! 🎉');
-        cart = [];
-        updateCart();
-        checkoutFormContainer.style.display = 'none';
-        checkoutForm.reset();
-        cartSidebar.classList.remove('open');
-        mainContent.classList.remove('shrink-cart');
-    };
+checkoutForm.onsubmit = (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('customer-name').value.trim();
+    const email = document.getElementById('customer-email').value.trim();
+    const address = document.getElementById('customer-address').value.trim();
+    const phone = document.getElementById('customer-phone').value.trim();
+
+    if (name.length < 3) {
+        alert('Imię i nazwisko musi mieć co najmniej 3 znaki');
+        return;
+    }
+    if (!email.includes('@') || !email.includes('.')) {
+        alert('Podaj poprawny adres e-mail');
+        return;
+    }
+    if (address.length < 5) {
+        alert('Adres jest za krótki');
+        return;
+    }
+    if (!/^[0-9+\-\s]{6,}$/.test(phone)) {
+        alert('Podaj poprawny numer telefonu');
+        return;
+    }
+
+    alert('Dziękujemy za zamówienie! 🎉');
+    cart = [];
+    updateCart();
+    checkoutFormContainer.style.display = 'none';
+    checkoutForm.reset();
+    cartSidebar.classList.remove('open');
+    mainContent.classList.remove('shrink-cart');
+};
 });

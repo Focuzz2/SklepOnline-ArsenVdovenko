@@ -1,11 +1,7 @@
 package com.example.shop.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "product")
@@ -15,15 +11,26 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Nazwa produktu nie może być pusta")
+    @Size(min = 2, max = 50, message = "Nazwa musi mieć od 2 do 50 znaków")
     private String name;
+
+    @NotBlank(message = "Opis nie może być pusty")
+    @Size(min = 5, max = 500, message = "Opis musi mieć od 5 do 500 znaków")
     private String description;
+
+    @Positive(message = "Cena musi być dodatnia")
     private double price;
+
+    @Min(value = 0, message = "Ilość nie może być ujemna")
     private int quantity;
 
+    @NotBlank(message = "Adres zdjęcia nie może być pusty")
     @Column(name = "image_url")
     private String imageUrl;
 
-    public Product() {}
+    public Product() {
+    }
 
     public Product(String name, String description, double price, int quantity, String imageUrl) {
         this.name = name;
