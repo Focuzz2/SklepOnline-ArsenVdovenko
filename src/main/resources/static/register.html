@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .auth-container { max-width: 400px; margin: 100px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; text-align: center; }
+        input { width: 100%; padding: 8px; margin: 10px 0; }
+        button { width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Zarejestruj się</h2>
+        <form id="registerForm">
+            <input type="text" id="reg-username" placeholder="Login" required>
+            <input type="password" id="reg-password" placeholder="Hasło" required>
+            <button type="submit">Utwórz konto</button>
+        </form>
+        <p>Masz konto? <a href="/login">Zaloguj się</a></p>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('reg-username').value;
+            const password = document.getElementById('reg-password').value;
+
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                alert('Rejestracja udana! Zaloguj się.');
+                window.location.href = '/login';
+            } else {
+                alert('Błąd rejestracji. Może taki użytkownik już istnieje?');
+            }
+        });
+    </script>
+</body>
+</html>

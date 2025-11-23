@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Administratora</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body { background-color: #f4f4f4; }
+        .admin-container { max-width: 600px; margin: 50px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; margin-bottom: 20px; }
+        .back-link { display: block; margin-top: 20px; text-align: center; text-decoration: none; color: #333; }
+    </style>
+</head>
+<body>
+
+<div class="admin-container">
+    <h2>Dodaj nowy produkt</h2>
+    <form id="addProductForm">
+        <label>Nazwa produktu:</label>
+        <input type="text" id="name" name="name" required minlength="2" maxlength="50">
+
+        <label>Opis:</label>
+        <textarea id="description" name="description" required minlength="5" maxlength="500"></textarea>
+
+        <label>Cena:</label>
+        <input type="number" id="price" name="price" required min="0.01" step="0.01">
+
+        <label>Ilość:</label>
+        <input type="number" id="quantity" name="quantity" required min="0">
+
+        <label>Adres zdjęcia:</label>
+        <input type="text" id="imageUrl" name="imageUrl" required>
+
+        <button type="submit">Dodaj produkt</button>
+    </form>
+    
+    <a href="/" class="back-link">← Powrót do sklepu</a>
+</div>
+
+<script src="/js/admin.js"></script>
+</body>
+</html>
