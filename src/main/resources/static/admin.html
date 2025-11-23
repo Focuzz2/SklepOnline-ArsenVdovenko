@@ -6,9 +6,17 @@
     <link rel="stylesheet" href="/css/style.css">
     <style>
         body { background-color: #f4f4f4; }
-        .admin-container { max-width: 600px; margin: 50px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .admin-container { max-width: 600px; margin: 50px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
         h2 { text-align: center; margin-bottom: 20px; }
         .back-link { display: block; margin-top: 20px; text-align: center; text-decoration: none; color: #333; }
+        
+        /* Style dla listy zamówień */
+        #orders-container { max-width: 1000px; margin: 50px auto; padding: 20px; }
+        .order-card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #ff6b6b; }
+        .order-card h3 { color: #1e1f26; margin-top: 0; }
+        .order-card ul { list-style: none; padding-left: 0; }
+        .order-card li { margin-bottom: 5px; font-size: 0.9em; }
+        .status-button { background-color: #1e1f26; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -36,6 +44,11 @@
     
     <a href="/" class="back-link">← Powrót do sklepu</a>
 </div>
+
+<div id="orders-container">
+    <h2>Lista Zamówień</h2>
+    <p id="loading-message">Ładowanie zamówień...</p>
+    </div>
 
 <script src="/js/admin.js"></script>
 </body>
