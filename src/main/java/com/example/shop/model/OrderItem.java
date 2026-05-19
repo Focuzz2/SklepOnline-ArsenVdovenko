@@ -10,10 +10,9 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Relacja do zamówienia
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    @JsonBackReference // ВИПРАВЛЕННЯ JSON
+    @JsonBackReference
     private Order order; 
 
     private Long productId; 
@@ -21,15 +20,12 @@ public class OrderItem {
     private int quantity;
     private double priceAtOrder;
 
-    // Конструктор за замовчуванням
     public OrderItem() {}
 
-    // --- Gettery i Settery ---
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    // Виправлення: Метод setOrder, який викликає OrderService
     public Order getOrder() { return order; }
     public void setOrder(Order order) { this.order = order; }
 

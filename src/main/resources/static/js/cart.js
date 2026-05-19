@@ -210,13 +210,12 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (response.status === 201) {
-                // УСПІХ: Замовлення прийнято
-                showCustomAlert(`Zamówienie przyjęte! Dziękujemy, ${customerData.name}.`);
-                
-                // Очищення кошика та UI
-                cart = {};
-                renderCart();
-                checkoutForm.reset();
+
+            alert(`Zamówienie przyjęte! Dziękujemy, ${customerData.name}.`);
+
+            cart = {};
+            renderCart();
+            checkoutForm.reset();
                 
             } else if (response.status === 400) {
                 // ПОМИЛКА: Продукт не знайдено (відкат транзакції)

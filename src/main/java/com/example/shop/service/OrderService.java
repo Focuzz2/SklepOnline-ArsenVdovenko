@@ -21,7 +21,6 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
 
-    // Конструктор
     public OrderService(OrderRepository orderRepository, ProductRepository productRepository) {
         this.orderRepository = orderRepository;
         this.productRepository = productRepository;
@@ -31,7 +30,6 @@ public class OrderService {
     public Order createOrder(OrderDTO orderDTO) {
         Order order = new Order();
         
-        // Mapowanie danych klienta
         order.setCustomerName(orderDTO.getCustomer().getName());
         order.setCustomerEmail(orderDTO.getCustomer().getEmail());
         order.setCustomerAddress(orderDTO.getCustomer().getAddress());
@@ -41,7 +39,6 @@ public class OrderService {
         order.setOrderDate(LocalDateTime.now());
         order.setStatus(OrderStatus.NEW);
 
-        // Mapowanie OrderItemDTO na OrderItem
         List<OrderItem> items = orderDTO.getItems().stream()
             .map(itemDto -> {
                 OrderItem item = new OrderItem();
@@ -50,7 +47,6 @@ public class OrderService {
                 item.setQuantity(itemDto.getQuantity());
                 item.setPriceAtOrder(itemDto.getPrice());
                 
-                // Pobieranie nazwy produktu
                 Product product = productRepository.findById(itemDto.getProductId())
                     .orElseThrow(() -> new RuntimeException("Nie znaleziono produktu o ID: " + itemDto.getProductId()));
                     
@@ -71,9 +67,7 @@ public class OrderService {
         order.setStatus(newStatus);
         return orderRepository.save(order);
     }
-    // Pobieranie wszystkich zamówień (Najnowsze na górze)
     public List<Order> getAllOrders() {
-        // Używamy Sort.Direction.DESC z poprawnym importem
         return orderRepository.findAll(Sort.by(Sort.Direction.DESC, "orderDate"));
     }
 }

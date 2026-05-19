@@ -20,14 +20,12 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    // 1. Ендпоінт для створення замовлення (доступний для всіх)
     @PostMapping("/orders")
     public ResponseEntity<Order> createOrder(@RequestBody OrderDTO orderDTO) {
         Order newOrder = orderService.createOrder(orderDTO);
         return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
     }
 
-    // 2. Ендпоінт для отримання всіх замовлень (Тільки ADMIN)
     @GetMapping("/admin/orders")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Order>> getAllOrders() {
@@ -35,20 +33,15 @@ public class OrderController {
         return ResponseEntity.ok(orders);
     }
 
-    // 3. Ендпоінт для зміни статусу замовлення (Тільки ADMIN)
 @PutMapping("/admin/orders/{id}/status")
 @PreAuthorize("hasRole('ADMIN')")
 public ResponseEntity<Order> updateOrderStatus(@PathVariable Long id, @RequestBody String newStatusString) {
-    
-    // ------------------------------------------------------------------
-    // ВИПРАВЛЕННЯ: Спрощене очищення
-    // ------------------------------------------------------------------
+
     String cleanStatus = newStatusString.trim().toUpperCase(); 
     
     try {
         System.out.println("Otrzymany status JEDNAK: [" + cleanStatus + "]"); 
         
-        // Тут cleanStatus має бути чистим "ACCEPT", "DONE" тощо.
         OrderStatus newStatus = OrderStatus.valueOf(cleanStatus);
         
         Order updatedOrder = orderService.updateOrderStatus(id, newStatus);

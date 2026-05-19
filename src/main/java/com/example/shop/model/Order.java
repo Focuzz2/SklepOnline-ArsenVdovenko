@@ -1,5 +1,4 @@
 package com.example.shop.model;
-// Обов'язково
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.time.LocalDateTime;
@@ -22,16 +21,14 @@ public class Order {
     private LocalDateTime orderDate = LocalDateTime.now();
     private double totalAmount;
     
-    // ВИПРАВЛЕННЯ: Використовуємо enum OrderStatus
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", length = 30) // <<<<< ЗНАЧЕННЯ ПОВИННО БУТИ ТУТ
+    @Column(name = "status", length = 30)
     private OrderStatus status;
     
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference // ВИПРАВЛЕННЯ JSON
+    @JsonManagedReference
     private List<OrderItem> items = new ArrayList<>();
 
-    // --- Gettery i Settery ---
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -54,7 +51,6 @@ public class Order {
     public double getTotalAmount() { return totalAmount; }
     public void setTotalAmount(double totalAmount) { this.totalAmount = totalAmount; }
 
-    // ВИПРАВЛЕННЯ: Gettery/Settery для OrderStatus
     public OrderStatus getStatus() { return status; }
     public void setStatus(OrderStatus status) { this.status = status; }
     
